@@ -1,0 +1,14 @@
+# Use OpenJDK 17 as base image
+FROM openjdk:17-jdk-alpine
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the packaged JAR file into the container at path /app
+COPY target/database-connector-0.0.1-SNAPSHOT.jar /app/app.jar
+
+# Expose port 8080
+EXPOSE 8080
+
+# Command to run your Spring Boot application when the container starts
+ENTRYPOINT ["java", "-jar", "app.jar"]
