@@ -4,6 +4,12 @@ FROM openjdk:17-jdk-alpine
 # Set the working directory inside the container
 WORKDIR /app
 
+# Copy the project files into the container
+COPY . .
+
+# Build the project to create the JAR file
+RUN ./mvnw clean package
+
 # Copy the packaged JAR file into the container at path /app
 COPY target/database-connector-0.0.1-SNAPSHOT.jar /app/app.jar
 
